@@ -8,6 +8,9 @@ const appState = {
     lifeCount: 3,
     score: 0,
     messagesOnHold: 0,
+    messageSender: "zero",
+    messageRecipient: "tolkien",
+    messageBody: "Lorem ipsum",
     gameOver: false
 };
 var vm = new Vue({

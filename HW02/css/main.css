@@ -29,3 +29,17 @@ html, body {
 .life-additional {
     fill: #ED7161;
 }
+
+.md-modal {
+    position: fixed;
+    top: 30%;
+    left: 35%;
+    width: 50%;
+    max-width: 630px;
+    min-width: 320px;
+    height: auto;
+
+}
+.modal-backdrop.show{
+    opacity: 0;
+}
