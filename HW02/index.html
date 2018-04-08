@@ -43,12 +43,12 @@
             </svg>
         </div>
         <div class="col-sm-8">
-            <button v-on:click="loseLife"> lose life </button>
-            <button v-on:click="gainLife"> gain life</button>
-            <p> {{ lifeCount }}</p>
-            <button v-on:click="doubleScore"> double Score</button>
-            <button v-on:click="score += 1">add score</button>
-            <p> {{ score }}</p>
+            <button v-on:click="correctChoice"> correct </button>
+            <button v-on:click="wrongChoice"> Wrong </button>
+            <button v-on:click="specialTaskCorrect"> Special done </button>
+            <button v-on:click="reset"> Start Over </button>
+            <h1> {{ score }} </h1>
+            <p> game over ? {{ gameOver }} </p>
         </div>
         <div class="col-sm-12"></div>
     </div>

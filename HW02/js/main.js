@@ -6,7 +6,9 @@
 
 const appState = {
     lifeCount: 3,
-    score: 0
+    score: 0,
+    messagesOnHold: 0,
+    gameOver: false
 };
 var vm = new Vue({
     data: appState,
@@ -14,6 +16,7 @@ var vm = new Vue({
         loseLife: function (event) {
             this.lifeCount -= 1;
             if (this.lifeCount == 0) {
+                this.gameOver = true;
                 alert("Game Over");
             }
         },
@@ -24,6 +27,21 @@ var vm = new Vue({
         },
         doubleScore: function (event) {
             this.score *= 2;
+        },
+        correctChoice: function (event) {
+            this.score += 1;
+        },
+        wrongChoice: function (event) {
+            this.loseLife();
+        },
+        specialTaskCorrect: function (event) {
+            this.gainLife();
+            this.doubleScore();
+        },
+        reset: function(event) {
+            this.lifeCount = 3;
+            this.score = 0;
+            this.gameOver = false;
         }
     }
 
