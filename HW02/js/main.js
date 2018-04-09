@@ -8,9 +8,6 @@ const appState = {
     lifeCount: 3,
     score: 0,
     messagesOnHold: 0,
-    messageSender: "zero",
-    messageRecipient: "tolkien",
-    messageBody: "Lorem ipsum",
     gameOver: false,
     currentMessage: {
         correct: false,
@@ -153,6 +150,15 @@ var vm = new Vue({
             this.currentMessage.recipient = this.messages[random].recipient;
             this.currentMessage.subject = this.messages[random].subject;
             this.currentMessage.content = this.messages[random].content;
+        },
+        checkUserDecision: function (action) {
+            if (action == "archive" && this.currentMessage.correct) {
+                this.correctChoice();
+            } else if (action == "delete" && !this.currentMessage.correct) {
+                this.correctChoice();
+            } else {
+                this.wrongChoice();
+            }
         }
     }
 

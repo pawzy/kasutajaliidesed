@@ -79,8 +79,8 @@
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal"> Archive </button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"> Delete </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="checkUserDecision('archive')"> Archive </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="checkUserDecision('delete')"> Delete </button>
                         </div>
                     </div>
                 </div>
