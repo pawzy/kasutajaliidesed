@@ -51,7 +51,7 @@
             <p> game over ? {{ gameOver }} </p>
         </div>
         <div class="col-sm-12">
-            <div data-toggle="modal" data-target="#message">
+            <div data-toggle="modal" data-target="#message" v-on:click="generateRandomModal">
                 <img src="img/mail_envelope_blue_icon.png" style="width: 200px; height: auto">
             </div>
 
@@ -66,15 +66,17 @@
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Title</h4>
+                            <h4 class="modal-title">{{currentMessage.subject}}</h4>
                         </div>
                         <div class="modal-body">
                             <h6> From: </h6>
-                            {{ messageSender }}
+                            {{currentMessage.sender}}
                             <h6> To: </h6>
-                            {{ messageRecipient }}
-                            <h6> Subject: </h6>
-                            {{ messageBody }}
+                            {{currentMessage.recipient}}
+                            <h6> Content: </h6>
+                            <p>
+                                {{currentMessage.content}}
+                            </p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal"> Archive </button>

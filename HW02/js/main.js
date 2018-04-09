@@ -12,6 +12,13 @@ const appState = {
     messageRecipient: "tolkien",
     messageBody: "Lorem ipsum",
     gameOver: false,
+    currentMessage: {
+        correct: false,
+        sender: "",
+        recipient: "",
+        subject: "",
+        content: ""
+    },
     messages: [
         {
             correct: true,
@@ -138,6 +145,14 @@ var vm = new Vue({
             this.lifeCount = 3;
             this.score = 0;
             this.gameOver = false;
+        },
+        generateRandomModal: function () {
+            var random = Math.floor(Math.random() * this.messages.length);
+            this.currentMessage.correct = this.messages[random].correct;
+            this.currentMessage.sender = this.messages[random].sender;
+            this.currentMessage.recipient = this.messages[random].recipient;
+            this.currentMessage.subject = this.messages[random].subject;
+            this.currentMessage.content = this.messages[random].content;
         }
     }
 
