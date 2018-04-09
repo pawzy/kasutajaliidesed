@@ -55,6 +55,10 @@
                 <img src="img/mail_envelope_blue_icon.png" style="width: 200px; height: auto">
             </div>
 
+            <div data-toggle="modal" data-target="#special">
+                Special open
+            </div>
+
             <!-- Modal -->
             <div id="message" class="md-modal modal fade" role="dialog">
                 <div class="modal-dialog">
@@ -77,7 +81,30 @@
                             <button type="button" class="btn btn-default" data-dismiss="modal"> Delete </button>
                         </div>
                     </div>
+                </div>
+            </div>
 
+            <div id="special" class="md-modal modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Special challenge</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <form class="form-inline">
+                                <div class="form-group mb-2">
+                                    <label for="equation" class="sr-only"><strong>X</strong> + <strong>Y</strong> = </label>
+                                    <input type="text" readonly class="form-control-plaintext" id="equation" value="X + Y = ">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label for="solution" class="sr-only"></label>
+                                    <input type="number" class="form-control" id="solution" placeholder="">
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
 
