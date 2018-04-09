@@ -11,7 +11,100 @@ const appState = {
     messageSender: "zero",
     messageRecipient: "tolkien",
     messageBody: "Lorem ipsum",
-    gameOver: false
+    gameOver: false,
+    messages: [
+        {
+            correct: true,
+            sender: "studentlife@tipikas.ee",
+            recipient: "tudeng@gmail.com",
+            subject: "TTÜ Tudengielu nädalakiri kevad 11. õppenädal",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada nisi augue, vitae tincidunt ante commodo eget. Curabitur ultricies facilisis est. Mauris gravida massa quis ex bibendum luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pellentesque, mi sed imperdiet elementum, odio arcu elementum urna, sit amet tristique lacus nunc in dui. Sed tellus elit, sagittis dictum lectus sed, tincidunt consequat mauris. Donec gravida ipsum et felis tincidunt semper. Ut nibh velit, tempus eget imperdiet eget, sodales sit amet purus. Mauris eu convallis risus."
+        },
+        {
+            correct: false,
+            sender: "studentlife@tu.ee",
+            recipient: "tudeng@gmail.com",
+            subject: "Suvemängudel näeme, eks?",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada nisi augue, vitae tincidunt ante commodo eget. Curabitur ultricies facilisis est. Mauris gravida massa quis ex bibendum luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pellentesque, mi sed imperdiet elementum, odio arcu elementum urna, sit amet tristique lacus nunc in dui. Sed tellus elit, sagittis dictum lectus sed, tincidunt consequat mauris. Donec gravida ipsum et felis tincidunt semper. Ut nibh velit, tempus eget imperdiet eget, sodales sit amet purus. Mauris eu convallis risus."
+        },
+        {
+            correct: true,
+            sender: "studentlife@tipikas.ee",
+            recipient: "tudeng@gmail.com",
+            subject: "Hinda TLÜ raamatukogu teenuseid / Evaluate TLÜ Library services",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada nisi augue, vitae tincidunt ante commodo eget. Curabitur ultricies facilisis est. Mauris gravida massa quis ex bibendum luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pellentesque, mi sed imperdiet elementum, odio arcu elementum urna, sit amet tristique lacus nunc in dui. Sed tellus elit, sagittis dictum lectus sed, tincidunt consequat mauris. Donec gravida ipsum et felis tincidunt semper. Ut nibh velit, tempus eget imperdiet eget, sodales sit amet purus. Mauris eu convallis risus."
+        },
+        {
+            correct: true,
+            sender: "alumni@ttu.ee",
+            recipient: "tudeng@gmail.com",
+            subject: "TTÜ saab 100. aastaseks, tule ja võta osa erinevatest üritustest!",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada nisi augue, vitae tincidunt ante commodo eget. Curabitur ultricies facilisis est. Mauris gravida massa quis ex bibendum luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pellentesque, mi sed imperdiet elementum, odio arcu elementum urna, sit amet tristique lacus nunc in dui. Sed tellus elit, sagittis dictum lectus sed, tincidunt consequat mauris. Donec gravida ipsum et felis tincidunt semper. Ut nibh velit, tempus eget imperdiet eget, sodales sit amet purus. Mauris eu convallis risus."
+        },
+        {
+            correct: false,
+            sender: "studentlife@tlu.ee",
+            recipient: "tudeng@gmail.com",
+            subject: "Enginaator 2018",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada nisi augue, vitae tincidunt ante commodo eget. Curabitur ultricies facilisis est. Mauris gravida massa quis ex bibendum luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pellentesque, mi sed imperdiet elementum, odio arcu elementum urna, sit amet tristique lacus nunc in dui. Sed tellus elit, sagittis dictum lectus sed, tincidunt consequat mauris. Donec gravida ipsum et felis tincidunt semper. Ut nibh velit, tempus eget imperdiet eget, sodales sit amet purus. Mauris eu convallis risus."
+        },
+        {
+            correct: true,
+            sender: "studentlife@tipikas.ee",
+            recipient: "tudeng@gmail.com",
+            subject: "Veel jõuad! Kandideeri voli- ja esinduskokku!",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada nisi augue, vitae tincidunt ante commodo eget. Curabitur ultricies facilisis est. Mauris gravida massa quis ex bibendum luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pellentesque, mi sed imperdiet elementum, odio arcu elementum urna, sit amet tristique lacus nunc in dui. Sed tellus elit, sagittis dictum lectus sed, tincidunt consequat mauris. Donec gravida ipsum et felis tincidunt semper. Ut nibh velit, tempus eget imperdiet eget, sodales sit amet purus. Mauris eu convallis risus."
+        },
+        {
+            correct: true,
+            sender: "valisstipendiumid@lists.ttu.ee",
+            recipient: "tudeng@gmail.com",
+            subject: "[Stipiinfo] Euroopa ülikoolid ootavad!",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada nisi augue, vitae tincidunt ante commodo eget. Curabitur ultricies facilisis est. Mauris gravida massa quis ex bibendum luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pellentesque, mi sed imperdiet elementum, odio arcu elementum urna, sit amet tristique lacus nunc in dui. Sed tellus elit, sagittis dictum lectus sed, tincidunt consequat mauris. Donec gravida ipsum et felis tincidunt semper. Ut nibh velit, tempus eget imperdiet eget, sodales sit amet purus. Mauris eu convallis risus."
+        },
+        {
+            correct: true,
+            sender: "studentlife@tipikas.ee",
+            recipient: "tudeng@gmail.com",
+            subject: "TTÜ Tudengielu Nädalakiri Kevad 5. õppenädal",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada nisi augue, vitae tincidunt ante commodo eget. Curabitur ultricies facilisis est. Mauris gravida massa quis ex bibendum luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pellentesque, mi sed imperdiet elementum, odio arcu elementum urna, sit amet tristique lacus nunc in dui. Sed tellus elit, sagittis dictum lectus sed, tincidunt consequat mauris. Donec gravida ipsum et felis tincidunt semper. Ut nibh velit, tempus eget imperdiet eget, sodales sit amet purus. Mauris eu convallis risus."
+        },
+        {
+            correct: true,
+            sender: "noreply@ois.ttu.ee",
+            recipient: "tudeng@gmail.com",
+            subject: "Esinduskogu ja IT-teaduskonna Üliõpilaskogu volikogu valimised",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada nisi augue, vitae tincidunt ante commodo eget. Curabitur ultricies facilisis est. Mauris gravida massa quis ex bibendum luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pellentesque, mi sed imperdiet elementum, odio arcu elementum urna, sit amet tristique lacus nunc in dui. Sed tellus elit, sagittis dictum lectus sed, tincidunt consequat mauris. Donec gravida ipsum et felis tincidunt semper. Ut nibh velit, tempus eget imperdiet eget, sodales sit amet purus. Mauris eu convallis risus."
+        },
+        {
+            correct: false,
+            sender: "robotiklubi@robotiklubi.ee",
+            recipient: "tudeng@gmail.com",
+            subject: "[List] Isetegemise Õhtud 2018",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada nisi augue, vitae tincidunt ante commodo eget. Curabitur ultricies facilisis est. Mauris gravida massa quis ex bibendum luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pellentesque, mi sed imperdiet elementum, odio arcu elementum urna, sit amet tristique lacus nunc in dui. Sed tellus elit, sagittis dictum lectus sed, tincidunt consequat mauris. Donec gravida ipsum et felis tincidunt semper. Ut nibh velit, tempus eget imperdiet eget, sodales sit amet purus. Mauris eu convallis risus."
+        },
+        {
+            correct: false,
+            sender: "studentlife@tipikas.ee",
+            recipient: "tudeng@gmail.com",
+            subject: "Kandideeri välisõppesse!",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada nisi augue, vitae tincidunt ante commodo eget. Curabitur ultricies facilisis est. Mauris gravida massa quis ex bibendum luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pellentesque, mi sed imperdiet elementum, odio arcu elementum urna, sit amet tristique lacus nunc in dui. Sed tellus elit, sagittis dictum lectus sed, tincidunt consequat mauris. Donec gravida ipsum et felis tincidunt semper. Ut nibh velit, tempus eget imperdiet eget, sodales sit amet purus. Mauris eu convallis risus."
+        },
+        {
+            correct: false,
+            sender: "studentlife@tartu.ee",
+            recipient: "tudeng@gmail.com",
+            subject: "TÜ Õhtu – III saatesalvestus",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada nisi augue, vitae tincidunt ante commodo eget. Curabitur ultricies facilisis est. Mauris gravida massa quis ex bibendum luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pellentesque, mi sed imperdiet elementum, odio arcu elementum urna, sit amet tristique lacus nunc in dui. Sed tellus elit, sagittis dictum lectus sed, tincidunt consequat mauris. Donec gravida ipsum et felis tincidunt semper. Ut nibh velit, tempus eget imperdiet eget, sodales sit amet purus. Mauris eu convallis risus."
+        },
+        {
+            correct: false,
+            sender: "studentlife@tlu.ee",
+            recipient: "tudeng@gmail.com",
+            subject: "TLÜ tudengielu nädalakiri kevad 2. õppenädal",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada nisi augue, vitae tincidunt ante commodo eget. Curabitur ultricies facilisis est. Mauris gravida massa quis ex bibendum luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pellentesque, mi sed imperdiet elementum, odio arcu elementum urna, sit amet tristique lacus nunc in dui. Sed tellus elit, sagittis dictum lectus sed, tincidunt consequat mauris. Donec gravida ipsum et felis tincidunt semper. Ut nibh velit, tempus eget imperdiet eget, sodales sit amet purus. Mauris eu convallis risus."
+        }
+    ]
 };
 var vm = new Vue({
     data: appState,
@@ -41,7 +134,7 @@ var vm = new Vue({
             this.gainLife();
             this.doubleScore();
         },
-        reset: function(event) {
+        reset: function (event) {
             this.lifeCount = 3;
             this.score = 0;
             this.gameOver = false;
