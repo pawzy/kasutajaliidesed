@@ -9,7 +9,9 @@ const appState = {
     gameOver: false,
     timerActive: true,
     timerValue: 0,
+    timerInterval: "",
     timerMax: 1000,
+    displayNone: "none",
     equation: {
         x: 0,
         y: 0,
@@ -148,6 +150,9 @@ var vm = new Vue({
             this.lifeCount = 3;
             this.score = 0;
             this.gameOver = false;
+            this.timerValue = 0;
+            document.getElementById("progress").style.width = '0px';
+            clearInterval(this.timerInterval);
         },
         generateRandomModal: function () {
             var random = Math.floor(Math.random() * this.messages.length);
@@ -165,6 +170,7 @@ var vm = new Vue({
             } else {
                 this.wrongChoice();
             }
+            this.messagesOnHold -= 1;
         },
         generateEquation: function() {
             x = Math.floor(Math.random() * 100);
@@ -199,7 +205,8 @@ var vm = new Vue({
             console.log(this.messagesOnHold);
         },
         timerStart: function() {
-            setInterval(this.timer, 50);
+            this.messagesOnHold = 1;
+            this.timerInterval = setInterval(this.timer, 50);
         }
 
     }

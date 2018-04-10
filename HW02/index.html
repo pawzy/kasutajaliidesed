@@ -50,26 +50,25 @@
             <div class="progress" id="progress"></div>
         </div>
         <div class="col-sm-8">
-<<<<<<< Updated upstream
-            <button v-on:click="correctChoice"> correct</button>
-            <button v-on:click="wrongChoice"> Wrong</button>
-            <button v-on:click="specialTaskCorrect"> Special done</button>
-            <button v-on:click="reset"> Start Over</button>
-=======
-            <button v-on:click="correctChoice"> correct </button>
-            <button v-on:click="wrongChoice"> Wrong </button>
-            <button v-on:click="specialTaskCorrect"> Special done </button>
-            <button v-on:click="reset"> Start Over </button>
-            <button v-on:click="timerStart"> asd</button>
->>>>>>> Stashed changes
-            <h1> {{ score }} </h1>
-            <p> game over ? {{ gameOver }} </p>
+            <button v-on:click="reset"> Reset </button>
+            <button v-on:click="timerStart"> Start Game</button>
+            <h1> Score: {{ score }} </h1>
         </div>
-        <div class="col-sm-12">
-            <div class="md-trigger" data-modal="message" data-target="#message" v-on:click="generateRandomModal">
-                <img src="img/mail_envelope_blue_icon.png" style="width: 200px; height: auto">
+        <div class="col-sm-12" align="right">
+            <div class="col-sm-13 md-trigger" v-bind:style="[messagesOnHold < 3 ? {visibility: 'hidden'} : {visibility: 'visible'}]"
+                 data-modal="message" data-target="#message" v-on:click="generateRandomModal">
+                <img src="img/mail_envelope_blue_icon.png" style="width: 150px; height: auto">
             </div>
-
+            <div class="col-sm-14 md-trigger" v-bind:style="[messagesOnHold < 2 ? {visibility: 'hidden'} : {visibility: 'visible'}]"
+                 data-modal="message" data-target="#message" v-on:click="generateRandomModal">
+                <img src="img/mail_envelope_blue_icon.png" style="width: 150px; height: auto">
+            </div>
+            <div class="col-sm-15 md-trigger" v-bind:style="[messagesOnHold < 1 ? {visibility: 'hidden'} : {visibility: 'visible'}]"
+                 data-modal="message" data-target="#message" v-on:click="generateRandomModal">
+                <img src="img/mail_envelope_blue_icon.png" style="width: 150px; height: auto">
+            </div>
+        </div>
+        <div class="col-sm-13">
             <div class="md-trigger" data-modal="special" data-target="#special" v-on:click="generateEquation">
                 Special open
             </div>
