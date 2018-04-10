@@ -10,6 +10,10 @@
     <script src="js/vue-router.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
+
+    <!--<link rel="stylesheet" type="text/css" href="css/default.css"/>-->
+    <link rel="stylesheet" type="text/css" href="css/component.css"/>
+    <script src="js/modernizr.custom.js"></script>
 </head>
 <body>
 
@@ -43,69 +47,73 @@
             </svg>
         </div>
         <div class="col-sm-8">
-            <button v-on:click="correctChoice"> correct </button>
-            <button v-on:click="wrongChoice"> Wrong </button>
-            <button v-on:click="specialTaskCorrect"> Special done </button>
-            <button v-on:click="reset"> Start Over </button>
+            <button v-on:click="correctChoice"> correct</button>
+            <button v-on:click="wrongChoice"> Wrong</button>
+            <button v-on:click="specialTaskCorrect"> Special done</button>
+            <button v-on:click="reset"> Start Over</button>
             <h1> {{ score }} </h1>
             <p> game over ? {{ gameOver }} </p>
         </div>
         <div class="col-sm-12">
-            <div data-toggle="modal" data-target="#message" v-on:click="generateRandomModal">
+            <div class="md-trigger" data-modal="message" data-target="#message" v-on:click="generateRandomModal">
                 <img src="img/mail_envelope_blue_icon.png" style="width: 200px; height: auto">
             </div>
 
-            <div data-toggle="modal" data-target="#special" v-on:click="generateEquation">
+            <div class="md-trigger" data-modal="special" data-target="#special" v-on:click="generateEquation">
                 Special open
             </div>
 
             <!-- Modal -->
-            <div id="message" class="md-modal modal fade" role="dialog">
-                <div class="modal-dialog">
+            <div id="message" class="md-modal md-effect-1" role="dialog">
+                <div class="md-content">
 
                     <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">{{currentMessage.subject}}</h4>
-                        </div>
-                        <div class="modal-body">
-                            <h6> From: </h6>
-                            {{currentMessage.sender}}
-                            <h6> To: </h6>
-                            {{currentMessage.recipient}}
-                            <h6> Content: </h6>
-                            <p>
-                                {{currentMessage.content}}
-                            </p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="checkUserDecision('archive')"> Archive </button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="checkUserDecision('delete')"> Delete </button>
-                        </div>
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{currentMessage.subject}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h6> From: </h6>
+                        {{currentMessage.sender}}
+                        <h6> To: </h6>
+                        {{currentMessage.recipient}}
+                        <h6> Content: </h6>
+                        <p>
+                            {{currentMessage.content}}
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default md-close"
+                                v-on:click="checkUserDecision('archive')"> Archive
+                        </button>
+                        <button type="button" class="btn btn-default md-close"
+                                v-on:click="checkUserDecision('delete')"> Delete
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <div id="special" class="md-modal modal fade" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Special challenge</h4>
-                        </div>
+            <div id="special" class="md-modal md-effect-4" role="dialog">
+                <div class="md-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Special challenge</h4>
+                    </div>
 
-                        <div class="modal-body">
-                            <form class="form-inline">
-                                <div class="form-group mb-2">
-                                    <label for="equation" class="sr-only"><strong>X</strong> + <strong>Y</strong> = </label>
-                                    <input type="text" readonly class="form-control-plaintext" id="equation" value="X + Y = ">
-                                </div>
-                                <div class="form-group mx-sm-3 mb-2">
-                                    <label for="solution" class="sr-only"></label>
-                                    <input type="number" class="form-control" id="solution" placeholder="">
-                                </div>
-                                <button type="submit" class="btn btn-primary mb-2" data-dismiss="modal" v-on:click="checkEquationSolution()">Submit</button>
-                            </form>
-                        </div>
+                    <div class="modal-body">
+                        <form class="form-inline">
+                            <div class="form-group mb-2">
+                                <label for="equation" class="sr-only"><strong>X</strong> + <strong>Y</strong> =
+                                </label>
+                                <input type="text" readonly class="form-control-plaintext" id="equation"
+                                       value="X + Y = ">
+                            </div>
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="solution" class="sr-only"></label>
+                                <input type="number" class="form-control" id="solution" placeholder="">
+                            </div>
+                            <button type="button" class="btn btn-primary mb-2 md-close"
+                                    v-on:click="checkEquationSolution()">Submit
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -114,9 +122,20 @@
     </div>
 </div>
 
-</body>
+<div class="md-overlay"></div><!-- the overlay element -->
 <script src="js/main.js"></script>
-<script>
 
+<!-- classie.js by @desandro: https://github.com/desandro/classie -->
+<script src="js/classie.js"></script>
+<script src="js/modalEffects.js"></script>
+
+<!-- for the blur effect -->
+<!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
+<script>
+    // this is important for IEs
+    var polyfilter_scriptpath = '/js/';
 </script>
+<script src="js/cssParser.js"></script>
+<script src="js/css-filters-polyfill.js"></script>
+</body>
 </html>
