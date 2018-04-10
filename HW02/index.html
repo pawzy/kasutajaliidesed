@@ -127,6 +127,7 @@
             <h3> Score: {{ score }} </h3>
         </div>
         <div class="col-sm-8">
+            <button class="md-trigger" data-modal="instructions"> Help </button>
             <button v-on:click="reset"> Reset </button>
             <button v-on:click="timerStart" v-if="gameOver"> Start Game </button>
         </div>
@@ -146,17 +147,14 @@
                  data-modal="message" data-target="#message" v-on:click="generateRandomModal">
                 <img src="img/mail_envelope_blue_icon.png" style="width: 150px; height: auto">
             </div>
-        </div>
-        <div class="col-sm-13">
-            <div class="md-trigger" data-modal="special" data-target="#special" v-on:click="generateEquation">
-                Special open
+            <div class="col-sm-16 md-trigger"
+                 v-bind:style="[specialAvailable == true ? {visibility: 'visible'} : {visibility: 'hidden'}]"
+                 data-modal="special" data-target="#special" v-on:click="generateEquation">
+                <img src="img/treasure_chest.png" style="width: 150px; height: auto;">
             </div>
-
-            <button class="md-trigger" data-modal="instructions">Blur</button>
         </div>
     </div>
     <div class="md-overlay"></div><!-- the overlay element -->
-
 </div>
 
 <script src="js/main.js"></script>
