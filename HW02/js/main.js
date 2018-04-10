@@ -2,13 +2,16 @@
  * Created by Pawzy on 21/02/2018.
  */
 
-
-
 const appState = {
     lifeCount: 3,
     score: 0,
     messagesOnHold: 0,
     gameOver: false,
+    equation: {
+        x: 0,
+        y: 0,
+        sum: 0
+    },
     currentMessage: {
         correct: false,
         sender: "",
@@ -113,32 +116,32 @@ const appState = {
 var vm = new Vue({
     data: appState,
     methods: {
-        loseLife: function (event) {
+        loseLife: function () {
             this.lifeCount -= 1;
             if (this.lifeCount == 0) {
                 this.gameOver = true;
                 alert("Game Over");
             }
         },
-        gainLife: function (event) {
+        gainLife: function () {
             if (this.lifeCount < 3) {
                 this.lifeCount += 1;
             }
         },
-        doubleScore: function (event) {
+        doubleScore: function () {
             this.score *= 2;
         },
-        correctChoice: function (event) {
+        correctChoice: function () {
             this.score += 1;
         },
-        wrongChoice: function (event) {
+        wrongChoice: function () {
             this.loseLife();
         },
-        specialTaskCorrect: function (event) {
+        specialTaskCorrect: function () {
             this.gainLife();
             this.doubleScore();
         },
-        reset: function (event) {
+        reset: function () {
             this.lifeCount = 3;
             this.score = 0;
             this.gameOver = false;
@@ -159,7 +162,25 @@ var vm = new Vue({
             } else {
                 this.wrongChoice();
             }
+        },
+        generateEquation: function() {
+            x = Math.floor(Math.random() * 100);
+            y = Math.floor(Math.random() * 100);
+            sum = x + y;
+            this.equation.x = x;
+            this.equation.y = y;
+            this.equation.sum = sum;
+            document.getElementById("equation").value = x + " + " + y + " = ";
+        },
+        checkEquationSolution: function() {
+            if (document.getElementById("solution").value == this.equation.sum) {
+                this.doubleScore();
+            } else {
+                this.loseLife()
+            }
+            document.getElementById("solution").value = "";
         }
+
     }
 
 }).$mount('#game');

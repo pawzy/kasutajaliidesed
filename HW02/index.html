@@ -55,7 +55,7 @@
                 <img src="img/mail_envelope_blue_icon.png" style="width: 200px; height: auto">
             </div>
 
-            <div data-toggle="modal" data-target="#special">
+            <div data-toggle="modal" data-target="#special" v-on:click="generateEquation">
                 Special open
             </div>
 
@@ -103,7 +103,7 @@
                                     <label for="solution" class="sr-only"></label>
                                     <input type="number" class="form-control" id="solution" placeholder="">
                                 </div>
-                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                <button type="submit" class="btn btn-primary mb-2" data-dismiss="modal" v-on:click="checkEquationSolution()">Submit</button>
                             </form>
                         </div>
                     </div>
