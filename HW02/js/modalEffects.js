@@ -21,7 +21,6 @@ var ModalEffects = (function () {
 
             function removeModal(hasPerspective) {
                 classie.remove(modal, 'md-show');
-                console.log(close);
                 if (hasPerspective) {
                     classie.remove(document.documentElement, 'md-perspective');
                 }
