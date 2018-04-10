@@ -207,8 +207,14 @@ var vm = new Vue({
         timerStart: function() {
             this.messagesOnHold = 1;
             this.timerInterval = setInterval(this.timer, 50);
+        },
+        openModalInstructions: function () {
+            console.log("called");
+            document.getElementById("instructions").classList.add("md-show");
         }
-
+    },
+    mounted: function () {
+        this.openModalInstructions();
     }
 
 }).$mount('#game');

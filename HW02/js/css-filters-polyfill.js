@@ -88,7 +88,7 @@
 					}
 				};
 				try{
-					xmlHttpCheck.send(null);
+					// xmlHttpCheck.send(null);
 				} catch(e){}
 			},2000);
 			
