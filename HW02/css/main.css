@@ -38,8 +38,24 @@ html, body {
     max-width: 630px;
     min-width: 320px;
     height: auto;
-
+    padding: 3px;
 }
-.modal-backdrop.show{
+.modal-backdrop.show {
     opacity: 0;
+}
+
+.progress-bar {
+    width: 506px;
+    height: 26px;
+    background-color: #bbb;
+    border-radius: 13px;
+    margin: 50px auto;
+}
+
+.progress {
+    width: 5px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: dodgerblue;
+
 }

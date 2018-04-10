@@ -7,6 +7,9 @@ const appState = {
     score: 0,
     messagesOnHold: 0,
     gameOver: false,
+    timerActive: true,
+    timerValue: 0,
+    timerMax: 1000,
     equation: {
         x: 0,
         y: 0,
@@ -179,8 +182,27 @@ var vm = new Vue({
                 this.loseLife()
             }
             document.getElementById("solution").value = "";
+        },
+        timer: function() {
+            console.log("timer called");
+            if (this.timerValue >= this.timerMax) {
+                this.timerValue = 0;
+                this.addMessage();
+                return
+            } else {
+                this.timerValue += 5;
+            }
+            document.getElementById("progress").style.width = (this.timerValue / 2) + 'px';
+        },
+        addMessage: function () {
+            this.messagesOnHold += 1;
+            console.log(this.messagesOnHold);
+        },
+        timerStart: function() {
+            setInterval(this.timer, 50);
         }
 
     }
 
 }).$mount('#game');
+
