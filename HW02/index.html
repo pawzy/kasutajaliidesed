@@ -18,7 +18,78 @@
 <body>
 
 
+
 <div class="container" id="game">
+
+    <!-- Modal -->
+    <div id="message" class="md-modal md-effect-1" role="dialog">
+        <div class="md-content">
+
+            <!-- Modal content-->
+            <div class="modal-header">
+                <h4 class="modal-title">{{currentMessage.subject}}</h4>
+            </div>
+            <div class="modal-body">
+                <h6> From: </h6>
+                {{currentMessage.sender}}
+                <h6> To: </h6>
+                {{currentMessage.recipient}}
+                <h6> Content: </h6>
+                <p>
+                    {{currentMessage.content}}
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default md-close"
+                        v-on:click="checkUserDecision('archive')"> Archive
+                </button>
+                <button type="button" class="btn btn-default md-close"
+                        v-on:click="checkUserDecision('delete')"> Delete
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="special" class="md-modal md-effect-4" role="dialog">
+        <div class="md-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Special challenge</h4>
+            </div>
+
+            <div class="modal-body">
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                        <label for="equation" class="sr-only"><strong>X</strong> + <strong>Y</strong> =
+                        </label>
+                        <input type="text" readonly class="form-control-plaintext" id="equation"
+                               value="X + Y = ">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="solution" class="sr-only"></label>
+                        <input type="number" class="form-control" id="solution" placeholder="">
+                    </div>
+                    <button type="button" class="btn btn-primary mb-2 md-close"
+                            v-on:click="checkEquationSolution()">Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="md-modal md-effect-16" id="instructions">
+        <div class="md-content">
+            <h3>Bürokraatiamäng</h3>
+            <div>
+                <ul>
+                    <li><strong>Sorteeri:</strong> ekraanile ilmuvad kirjad. </li>
+                    <li><strong>Arhiveeri:</strong> kirjad mis sisaldavad saatja e-mailis või pealkirjas sõnu TTÜ või Tipikas</li>
+                    <li><strong>Kustuta:</strong> kõik muud kirjad </li>
+                    <li><strong>Lahenda:</strong> lisaülesandeid ja kahekordista punktid!</li>
+                    <li><strong>Püsi:</strong> elus!</li>
+                </ul>
+                <button class="md-close">Mängima</button>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-sm-2">
             <svg version="1.1" id="life-1" v-bind:class="{lost : lifeCount < 1}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -50,18 +121,11 @@
             <div class="progress" id="progress"></div>
         </div>
         <div class="col-sm-8">
-<<<<<<< Updated upstream
-            <button v-on:click="correctChoice"> correct</button>
-            <button v-on:click="wrongChoice"> Wrong</button>
-            <button v-on:click="specialTaskCorrect"> Special done</button>
-            <button v-on:click="reset"> Start Over</button>
-=======
             <button v-on:click="correctChoice"> correct </button>
             <button v-on:click="wrongChoice"> Wrong </button>
             <button v-on:click="specialTaskCorrect"> Special done </button>
             <button v-on:click="reset"> Start Over </button>
             <button v-on:click="timerStart"> asd</button>
->>>>>>> Stashed changes
             <h1> {{ score }} </h1>
             <p> game over ? {{ gameOver }} </p>
         </div>
@@ -74,68 +138,14 @@
                 Special open
             </div>
 
-            <!-- Modal -->
-            <div id="message" class="md-modal md-effect-1" role="dialog">
-                <div class="md-content">
-
-                    <!-- Modal content-->
-                    <div class="modal-header">
-                        <h4 class="modal-title">{{currentMessage.subject}}</h4>
-                    </div>
-                    <div class="modal-body">
-                        <h6> From: </h6>
-                        {{currentMessage.sender}}
-                        <h6> To: </h6>
-                        {{currentMessage.recipient}}
-                        <h6> Content: </h6>
-                        <p>
-                            {{currentMessage.content}}
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default md-close"
-                                v-on:click="checkUserDecision('archive')"> Archive
-                        </button>
-                        <button type="button" class="btn btn-default md-close"
-                                v-on:click="checkUserDecision('delete')"> Delete
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="special" class="md-modal md-effect-4" role="dialog">
-                <div class="md-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Special challenge</h4>
-                    </div>
-
-                    <div class="modal-body">
-                        <form class="form-inline">
-                            <div class="form-group mb-2">
-                                <label for="equation" class="sr-only"><strong>X</strong> + <strong>Y</strong> =
-                                </label>
-                                <input type="text" readonly class="form-control-plaintext" id="equation"
-                                       value="X + Y = ">
-                            </div>
-                            <div class="form-group mx-sm-3 mb-2">
-                                <label for="solution" class="sr-only"></label>
-                                <input type="number" class="form-control" id="solution" placeholder="">
-                            </div>
-                            <button type="button" class="btn btn-primary mb-2 md-close"
-                                    v-on:click="checkEquationSolution()">Submit
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
+            <button class="md-trigger" data-modal="instructions">Blur</button>
         </div>
     </div>
+    <div class="md-overlay"></div><!-- the overlay element -->
+
 </div>
 
-<div class="md-overlay"></div><!-- the overlay element -->
 <script src="js/main.js"></script>
-
 <!-- classie.js by @desandro: https://github.com/desandro/classie -->
 <script src="js/classie.js"></script>
 <script src="js/modalEffects.js"></script>

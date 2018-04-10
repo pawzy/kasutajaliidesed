@@ -200,8 +200,14 @@ var vm = new Vue({
         },
         timerStart: function() {
             setInterval(this.timer, 50);
+        },
+        openModalInstructions: function () {
+            console.log("called");
+            document.getElementById("instructions").classList.add("md-show");
         }
-
+    },
+    mounted: function () {
+        this.openModalInstructions();
     }
 
 }).$mount('#game');
