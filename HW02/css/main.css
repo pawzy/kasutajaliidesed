@@ -14,6 +14,7 @@ html, body {
     height: 50px;
     width: 50px;
     padding-left: 10px;
+    margin-top: 8px;
 }
 
 *[id^="life-"].lost .life-fill {
@@ -49,7 +50,7 @@ html, body {
     height: 26px;
     background-color: #bbb;
     border-radius: 13px;
-    margin: 50px auto;
+    margin: 20px auto;
 }
 
 .progress {
@@ -57,5 +58,9 @@ html, body {
     height: 20px;
     border-radius: 10px;
     background-color: dodgerblue;
+}
 
+.score h3 {
+    margin-top: 12px;
+    margin-left: 10px;
 }
