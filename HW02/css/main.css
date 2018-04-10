@@ -54,7 +54,7 @@ html, body {
 }
 
 .progress {
-    width: 5px;
+    width: 0px;
     height: 20px;
     border-radius: 10px;
     background-color: dodgerblue;

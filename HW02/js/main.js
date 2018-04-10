@@ -6,6 +6,7 @@ const appState = {
     lifeCount: 3,
     score: 0,
     messagesOnHold: 0,
+    messagesSorted: 0,
     gameOver: false,
     timerActive: true,
     timerValue: 0,
@@ -96,7 +97,7 @@ const appState = {
             content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada nisi augue, vitae tincidunt ante commodo eget. Curabitur ultricies facilisis est. Mauris gravida massa quis ex bibendum luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pellentesque, mi sed imperdiet elementum, odio arcu elementum urna, sit amet tristique lacus nunc in dui. Sed tellus elit, sagittis dictum lectus sed, tincidunt consequat mauris. Donec gravida ipsum et felis tincidunt semper. Ut nibh velit, tempus eget imperdiet eget, sodales sit amet purus. Mauris eu convallis risus."
         },
         {
-            correct: false,
+            correct: true,
             sender: "studentlife@tipikas.ee",
             recipient: "tudeng@gmail.com",
             subject: "Kandideeri välisõppesse!",
@@ -125,6 +126,7 @@ var vm = new Vue({
             this.lifeCount -= 1;
             if (this.lifeCount == 0) {
                 this.gameOver = true;
+                clearInterval(this.timerInterval);
                 alert("Game Over");
             }
         },
@@ -153,6 +155,8 @@ var vm = new Vue({
             this.timerValue = 0;
             document.getElementById("progress").style.width = '0px';
             clearInterval(this.timerInterval);
+            this.gameOver = true;
+            this.messagesOnHold = 0;
         },
         generateRandomModal: function () {
             var random = Math.floor(Math.random() * this.messages.length);
@@ -170,6 +174,7 @@ var vm = new Vue({
             } else {
                 this.wrongChoice();
             }
+            this.messagesSorted += 1;
             this.messagesOnHold -= 1;
         },
         generateEquation: function() {
@@ -196,17 +201,21 @@ var vm = new Vue({
                 this.addMessage();
                 return
             } else {
-                this.timerValue += 5;
+                this.timerValue += 5 + this.messagesSorted / 2;
             }
             document.getElementById("progress").style.width = (this.timerValue / 2) + 'px';
         },
         addMessage: function () {
+            if (this.messagesOnHold == 3) {
+                this.messagesOnHold = 0;
+                this.lifeCount -= 1;
+                return
+            }
             this.messagesOnHold += 1;
-            console.log(this.messagesOnHold);
         },
         timerStart: function() {
             this.messagesOnHold = 1;
-            this.timerInterval = setInterval(this.timer, 50);
+            this.timerInterval = setInterval(this.timer, 25);
         },
         openModalInstructions: function () {
             console.log("called");
