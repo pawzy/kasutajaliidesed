@@ -13,6 +13,7 @@ const appState = {
     timerInterval: "",
     timerMax: 1000,
     specialAvailable: false,
+    specialCount: 0,
     equation: {
         x: 0,
         y: 0,
@@ -127,7 +128,7 @@ var vm = new Vue({
             if (this.lifeCount == 0) {
                 this.gameOver = true;
                 clearInterval(this.timerInterval);
-                alert("Game Over");
+                document.getElementById("gameOver").classList.add("md-show");
             }
         },
         gainLife: function () {
@@ -158,6 +159,8 @@ var vm = new Vue({
             this.gameOver = true;
             this.messagesOnHold = 0;
             this.specialAvailable = false;
+            this.messagesSorted = 0;
+            this.specialCount = 0;
         },
         generateRandomModal: function () {
             var random = Math.floor(Math.random() * this.messages.length);
@@ -177,13 +180,15 @@ var vm = new Vue({
             }
             this.messagesSorted += 1;
             this.messagesOnHold -= 1;
-            if (this.messagesSorted % 5 == 4) {
+            this.specialCount += 1;
+            if (this.specialCount == 4) {
                 this.specialAvailable = true;
+                this.specialCount = 0;
             }
         },
         generateEquation: function() {
-            x = Math.floor(Math.random() * 100);
-            y = Math.floor(Math.random() * 100);
+            x = Math.floor(Math.random() * 10);
+            y = Math.floor(Math.random() * 10);
             sum = x + y;
             this.equation.x = x;
             this.equation.y = y;
@@ -216,6 +221,8 @@ var vm = new Vue({
         addMessage: function () {
             if (this.messagesOnHold == 3) {
                 this.messagesOnHold = 0;
+                this.specialAvailable = false;
+                this.specialCount = 0;
                 this.loseLife();
                 return
             }

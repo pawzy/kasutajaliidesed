@@ -5,7 +5,8 @@
     <title>Bürokraatiamäng</title>
 
     <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
-    <link type="text/css" rel="stylesheet" href="css/main.css">
+    <link type="text/css" rel="stylesheet" href="css/main.css"/>
+    <link type="text/css" rel="stylesheet" href="css/animate.css"/>
     <script src="js/vue.js"></script>
     <script src="js/vue-router.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -19,11 +20,9 @@
 
 
 <div class="container" id="game">
-
     <!-- Modal -->
     <div id="message" class="md-modal md-effect-1" role="dialog">
         <div class="md-content">
-
             <!-- Modal content-->
             <div class="modal-header">
                 <h4 class="modal-title">{{currentMessage.subject}}</h4>
@@ -39,12 +38,12 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default md-close"
+                <div type="button" class="btn btn-primary md-close"
                         v-on:click="checkUserDecision('archive')"> Archive
-                </button>
-                <button type="button" class="btn btn-default md-close"
+                </div>
+                <div type="button" class="btn btn-primary md-close"
                         v-on:click="checkUserDecision('delete')"> Delete
-                </button>
+                </div>
             </div>
         </div>
     </div>
@@ -66,9 +65,9 @@
                         <label for="solution" class="sr-only"></label>
                         <input type="number" class="form-control" id="solution" placeholder="">
                     </div>
-                    <button type="button" class="btn btn-primary mb-2 md-close"
+                    <div class="btn btn-primary mb-2 md-close"
                             v-on:click="checkEquationSolution()">Submit
-                    </button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -86,7 +85,21 @@
                     <li><strong>Lahenda:</strong> lisaülesandeid ja kahekordista punktid!</li>
                     <li><strong>Püsi:</strong> elus!</li>
                 </ul>
-                <button class="md-close" v-on:click="timerStart">Mängima</button>
+                <div class="btn btn-primary md-close" v-on:click="timerStart">Mängima</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="md-modal md-effect-12" id="gameOver">
+        <div class="md-content">
+            <div>
+                <h1>Mäng läbi!</h1>
+                <h3>Sinu kogutud punktid: {{score}}</h3>
+
+                <div class="btn btn-primary md-close" v-on:click="timerStart">Alusta uut mängu</div>
+                <!--<input type="button" value="Close this window" onclick="self.close()">-->
+                <div class="btn btn-primary" onclick="self.close()">Lahku</div>
+
             </div>
         </div>
     </div>
@@ -126,32 +139,50 @@
         <div class="col-sm-2 score">
             <h3> Score: {{ score }} </h3>
         </div>
-        <div class="col-sm-8">
-            <button class="md-trigger" data-modal="instructions"> Help </button>
-            <button v-on:click="reset"> Reset </button>
-            <button v-on:click="timerStart" v-if="gameOver"> Start Game </button>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="md-trigger" data-modal="instructions">Help</button>
+            <button class="md-trigger" data-modal="gameOver">L2bi</button>
+            <button v-on:click="reset"> Reset</button>
+            <button v-on:click="timerStart" v-if="gameOver"> Start Game</button>
         </div>
-        <div class="col-sm-12" align="right">
-            <div class="col-sm-13 md-trigger"
-                 v-bind:style="[messagesOnHold < 3 ? {visibility: 'hidden'} : {visibility: 'visible'}]"
-                 data-modal="message" data-target="#message" v-on:click="generateRandomModal">
-                <img src="img/mail_envelope_blue_icon.png" style="width: 150px; height: auto">
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="archive">
+                <img src="img/archive.png">
             </div>
-            <div class="col-sm-14 md-trigger"
-                 v-bind:style="[messagesOnHold < 2 ? {visibility: 'hidden'} : {visibility: 'visible'}]"
-                 data-modal="message" data-target="#message" v-on:click="generateRandomModal">
-                <img src="img/mail_envelope_blue_icon.png" style="width: 150px; height: auto">
+            <div class="bin">
+                <img src="img/bin.png">
             </div>
-            <div class="col-sm-15 md-trigger"
-                 v-bind:style="[messagesOnHold < 1 ? {visibility: 'hidden'} : {visibility: 'visible'}]"
-                 data-modal="message" data-target="#message" v-on:click="generateRandomModal">
-                <img src="img/mail_envelope_blue_icon.png" style="width: 150px; height: auto">
+        </div>
+        <div class="col-sm-8"></div>
+        <div class="col-sm-2" class="right">
+            <div class="row mail-container">
+                <div class="md-trigger col-sm-6 animated flash"
+                     v-bind:style="[messagesOnHold < 3 ? {display: 'none'} : {display: 'block'}]"
+                     data-modal="message" data-target="#message" v-on:click="generateRandomModal">
+                    <img src="img/mail.png" class="mail">
+                </div>
+                <div class="md-trigger col-sm-6 animated flash"
+                     v-bind:style="[messagesOnHold < 2 ? {display: 'none'} : {display: 'block'}]"
+                     data-modal="message" data-target="#message" v-on:click="generateRandomModal">
+                    <img src="img/mail.png" class="mail">
+                </div>
             </div>
-            <div class="col-sm-16 md-trigger"
-                 v-bind:style="[specialAvailable == true ? {visibility: 'visible'} : {visibility: 'hidden'}]"
-                 data-modal="special" data-target="#special" v-on:click="generateEquation">
-                <img src="img/treasure_chest.png" style="width: 150px; height: auto;">
+            <div class="row mail-container">
+                <div class="md-trigger col-sm-6 animated flash" v-bind:style="[messagesOnHold < 1 ? {display: 'none'} : {display: 'block'}]"
+                     data-modal="message" data-target="#message" v-on:click="generateRandomModal">
+                    <img src="img/mail.png" class="mail">
+                </div>
+                <div class="md-trigger col-sm-6 animated wobble"
+                     v-bind:style="[specialAvailable == true ? {display: 'block'} : {display: 'none'}]"
+                     data-modal="special" data-target="#special" v-on:click="generateEquation">
+                    <img src="img/mail.png" class="mail">
+                </div>
             </div>
+
         </div>
     </div>
     <div class="md-overlay"></div><!-- the overlay element -->
