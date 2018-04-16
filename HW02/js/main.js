@@ -14,6 +14,7 @@ const appState = {
     timerMax: 1000,
     specialAvailable: false,
     specialCount: 0,
+    losePoint: false,
     equation: {
         x: 0,
         y: 0,
@@ -125,6 +126,8 @@ var vm = new Vue({
     methods: {
         loseLife: function () {
             this.lifeCount -= 1;
+            this.losePoint = true;
+            this.closeModals();
             if (this.lifeCount == 0) {
                 this.gameOver = true;
                 clearInterval(this.timerInterval);
@@ -163,6 +166,7 @@ var vm = new Vue({
             this.specialCount = 0;
         },
         generateRandomModal: function () {
+            this.losePoint = false;
             var random = Math.floor(Math.random() * this.messages.length);
             this.currentMessage.correct = this.messages[random].correct;
             this.currentMessage.sender = this.messages[random].sender;
@@ -187,6 +191,7 @@ var vm = new Vue({
             }
         },
         generateEquation: function() {
+            this.losePoint = false;
             x = Math.floor(Math.random() * 10);
             y = Math.floor(Math.random() * 10);
             sum = x + y;
@@ -204,7 +209,6 @@ var vm = new Vue({
             }
             document.getElementById("solution").value = "";
             this.messagesSorted += 1;
-            this.messagesOnHold -= 1;
             this.specialAvailable = false;
         },
         timer: function() {
@@ -218,8 +222,14 @@ var vm = new Vue({
             }
             document.getElementById("progress").style.width = (this.timerValue / 2) + 'px';
         },
+        closeModals: function () {
+            document.getElementById("message").classList.remove("md-show");
+            document.getElementById("special").classList.remove("md-show");
+
+        },
         addMessage: function () {
-            if (this.messagesOnHold == 3) {
+            this.losePoint = false;
+            if (this.messagesOnHold == 3 || (this.messagesOnHold == 2 && this.specialAvailable)) {
                 this.messagesOnHold = 0;
                 this.specialAvailable = false;
                 this.specialCount = 0;
