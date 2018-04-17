@@ -22,6 +22,7 @@ const appState = {
     gameOverSound: "",
     doubleScoreSound: "",
     increaseScoreSound: "",
+    gameStart: "",
     equation: {
         x: 0,
         y: 0,
@@ -287,8 +288,7 @@ var vm = new Vue({
         }
     },
     beforeMount: function () {
-        gameStart = new Audio("audio/gameStart.mp3");
-        gameStart.play();
+        this.gameStart = new Audio("audio/gameStart.mp3");
         this.loseLifeSound = new Audio("audio/loseLife.mp3");
         this.gameOverSound = new Audio("audio/gameOver.mp3");
         this.doubleScoreSound = new Audio("audio/doubleScore.mp3");
@@ -297,6 +297,7 @@ var vm = new Vue({
     },
     mounted: function () {
         this.openModalInstructions();
+        this.gameStart.play();
         window.addEventListener('keyup', function (event) {
             if (event.keyCode === 13 && $("#special").hasClass("md-show")) {
                 vm.checkEquationSolution();
