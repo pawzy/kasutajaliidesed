@@ -54,7 +54,7 @@ perspective effects (not including the modals and the overlay).
 	left: 0;
 	z-index: 1000;
 	opacity: 0;
-	background: rgba(143,27,15,0.8);
+	background: rgba(160, 160, 146, 0.8);
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
@@ -68,7 +68,7 @@ perspective effects (not including the modals and the overlay).
 /* Content styles */
 .md-content {
 	color: #fff;
-	background: #e74c3c;
+	background: #798681;
 	position: relative;
 	border-radius: 3px;
 	margin: 0 auto;
@@ -408,7 +408,7 @@ perspective effects (not including the modals and the overlay).
 }
 
 .md-show.md-effect-12 ~ .md-overlay {
-	background: #e74c3c;
+	background: #95AFA2;
 } 
 
 .md-effect-12 .md-content h3,
@@ -529,7 +529,7 @@ perspective effects (not including the modals and the overlay).
 
 /* Effect 16:  Blur */
 .md-show.md-effect-16 ~ .md-overlay {
-	background: rgba(180,46,32,0.5);
+	background: rgba(160,160,146,0.5);
 }
 
 .md-show.md-effect-16 ~ .container {
@@ -610,7 +610,7 @@ perspective effects (not including the modals and the overlay).
 }
 
 .md-show.md-effect-18 ~ .md-overlay {
-	background: rgba(143,27,15,0.8);
+	background: rgba(160,160,146, 0.8);
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
 	transition: all 0.5s;

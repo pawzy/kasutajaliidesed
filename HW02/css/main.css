@@ -4,12 +4,18 @@ html, body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
+    color: #3b3b3b;
 }
 
 #game {
     height: 100%;
 }
 
+#instructions strong {
+    text-transform: uppercase;
+    font-size: 19px;
+    letter-spacing: 1px;
+}
 *[id^="life-"] {
     height: 50px;
     width: 50px;
@@ -55,23 +61,30 @@ html, body {
 
 .progress {
     width: 0px;
+
+
+
     height: 20px;
     border-radius: 10px;
-    background-color: dodgerblue;
+    background-color: #6C7773;
 }
 
 .score h3 {
-    margin-top: 12px;
+    margin-top: 14px;
     margin-left: 10px;
 }
 
 .mail {
-    width: 110px;
+    width: 104px;
     height: auto;
 }
 
 .mail-container {
-    height: 130px;
+    height: 105px;
+}
+
+.col-mail {
+    margin-top: 24px;
 }
 
 .losePoint {

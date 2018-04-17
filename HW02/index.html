@@ -39,10 +39,10 @@
             </div>
             <div class="modal-footer">
                 <div type="button" class="btn btn-primary md-close"
-                        v-on:click="checkUserDecision('archive')"> Archive
+                     v-on:click="checkUserDecision('archive')"> Archive
                 </div>
                 <div type="button" class="btn btn-primary md-close"
-                        v-on:click="checkUserDecision('delete')"> Delete
+                     v-on:click="checkUserDecision('delete')"> Delete
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
                         <input type="number" class="form-control" id="solution" placeholder="">
                     </div>
                     <div class="btn btn-primary mb-2 md-close"
-                            v-on:click="checkEquationSolution()">Submit
+                         v-on:click="checkEquationSolution()">Submit
                     </div>
                 </form>
             </div>
@@ -77,7 +77,7 @@
             <h3>Bürokraatiamäng</h3>
             <div>
                 <ul>
-                    <li><strong>Sorteeri:</strong> ekraanile ilmuvad kirjad.</li>
+                    <li><strong>Kliki kirjale ja sorteeri:</strong> ekraanile ilmuvad kirjad.</li>
                     <li><strong>Arhiveeri:</strong> kirjad mis sisaldavad saatja e-mailis või pealkirjas sõnu TTÜ või
                         Tipikas
                     </li>
@@ -137,7 +137,7 @@
             </div>
         </div>
         <div class="col-sm-2 score">
-            <h3> Score: {{ score }} </h3>
+            <h3> Punktid: {{ score }} </h3>
         </div>
     </div>
     <div class="row">
@@ -150,29 +150,18 @@
     </div>
     <div class="row">
         <div class="col-sm-2">
-            <div class="archive">
-                <img src="img/archive.png">
-            </div>
-            <div class="bin">
-                <img src="img/bin.png">
-            </div>
+            <!--<div class="archive">-->
+                <!--<img src="img/archive.png">-->
+            <!--</div>-->
+            <!--<div class="bin">-->
+                <!--<img src="img/bin.png">-->
+            <!--</div>-->
         </div>
         <div class="col-sm-8"></div>
-        <div class="col-sm-2" class="right">
+        <div class="col-sm-2 col-mail">
             <div class="row mail-container">
                 <div class="md-trigger col-sm-6 animated zoomInRight"
                      v-bind:style="[messagesOnHold < 3 ? {display: 'none'} : {display: 'block'}]"
-                     data-modal="message" data-target="#message" v-on:click="generateRandomModal">
-                    <img src="img/mail.png" class="mail">
-                </div>
-                <div class="md-trigger col-sm-6 animated zoomInRight"
-                     v-bind:style="[messagesOnHold < 2 ? {display: 'none'} : {display: 'block'}]"
-                     data-modal="message" data-target="#message" v-on:click="generateRandomModal">
-                    <img src="img/mail.png" class="mail">
-                </div>
-            </div>
-            <div class="row mail-container">
-                <div class="md-trigger col-sm-6 animated zoomInRight" v-bind:style="[messagesOnHold < 1 ? {display: 'none'} : {display: 'block'}]"
                      data-modal="message" data-target="#message" v-on:click="generateRandomModal">
                     <img src="img/mail.png" class="mail">
                 </div>
@@ -182,10 +171,26 @@
                     <img src="img/mail.png" class="mail">
                 </div>
             </div>
+            <div class="row mail-container">
+                <div class="md-trigger col-sm-6 animated zoomInRight"
+                     v-bind:style="[messagesOnHold < 2 ? {display: 'none'} : {display: 'block'}]"
+                     data-modal="message" data-target="#message" v-on:click="generateRandomModal">
+                    <img src="img/mail.png" class="mail">
+                </div>
+            </div>
+
+            <div class="row mail-container">
+                <div class="md-trigger col-sm-6 animated zoomInRight"
+                     v-bind:style="[messagesOnHold < 1 ? {display: 'none'} : {display: 'block'}]"
+                     data-modal="message" data-target="#message" v-on:click="generateRandomModal">
+                    <img src="img/mail.png" class="mail">
+                </div>
+            </div>
         </div>
     </div>
     <div class="md-overlay"></div><!-- the overlay element -->
-    <div class="losePoint animated" v-bind:class="{fadeOutUp : losePoint}" v-bind:style="[losePoint ? {display: 'block'} : {display: 'none'}]">
+    <div class="losePoint animated" v-bind:class="{fadeOutUp : losePoint}"
+         v-bind:style="[losePoint ? {display: 'block'} : {display: 'none'}]">
         -1
         <svg version="1.1" id="lifeLost" v-bind:class="{lost : lifeCount < 3}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	            viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
