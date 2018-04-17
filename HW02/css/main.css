@@ -1,5 +1,5 @@
 html, body {
-    height:100%;
+    height: 100%;
     background-image: url("../img/commodore_pet.jpg");
     background-repeat: no-repeat;
     background-position: center;
@@ -16,6 +16,50 @@ html, body {
     font-size: 19px;
     letter-spacing: 1px;
 }
+
+#gameOver {
+    top: 45%;
+}
+
+#gameOver h3 {
+    text-align: left;
+    padding-left: 0;
+    font-size: 34px;
+    padding-top: 2px;
+    margin-bottom: 20px;
+}
+
+#gameOver h1 {
+    margin-bottom: 0;
+}
+
+#gameOver .btn-startNew {
+    margin-right: 20px;
+}
+
+#gameOver .btn-primary {
+    padding: 10px 14px;
+}
+
+#message h6 {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+#message .btn {
+    padding: 10px 24px;
+}
+
+#special .modal-body {
+    padding: 35px;
+}
+
+#special .form-inline {
+    width: 300px;
+    margin: 0 auto;
+}
+
 *[id^="life-"] {
     height: 50px;
     width: 50px;
@@ -26,9 +70,11 @@ html, body {
 *[id^="life-"].lost .life-fill {
     fill: #696969;
 }
+
 *[id^="life-"].lost .life-additional {
     fill: #B0B0B0;
 }
+
 .life-fill {
     fill: #C03A2B;
 }
@@ -47,6 +93,7 @@ html, body {
     height: auto;
     padding: 3px;
 }
+
 .modal-backdrop.show {
     opacity: 0;
 }
@@ -61,8 +108,6 @@ html, body {
 
 .progress {
     width: 0px;
-
-
 
     height: 20px;
     border-radius: 10px;
@@ -87,7 +132,7 @@ html, body {
     margin-top: 24px;
 }
 
-.losePoint {
+.losePoint, .increaseScore, .duplicateScore {
     position: absolute;
     top: 33%;
     left: 50%;
@@ -124,4 +169,68 @@ html, body {
         -webkit-transform: translate3d(0, -400%, 0);
         transform: translate3d(0, -400%, 0);
     }
+}
+
+.btn-start {
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    width: 122px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background-color: transparent;
+    border-color: #fff;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle,
+.btn-primary:hover {
+    color: #fff;
+    background-color: rgba(47, 54, 62, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary:focus, .btn-primary.focus {
+    box-shadow: 0 0 0 0.2rem rgba(47, 54, 62, 0.6);
+}
+
+.btn-instructions {
+    margin-right: 140px;
+}
+.btn-leave {
+    width: 84px;
+}
+
+
+.btn-checkEquation {
+    padding: 6px 20px;
+}
+
+#equation {
+    width: 98px;
+    font-size: 26px;
+    color: #fff;
+    margin-top: -5px;
+    padding: 2px 12px;
+}
+
+#solution {
+    width: 46px;
+    margin-right: 16px;
+}
+
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

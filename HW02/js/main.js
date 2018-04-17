@@ -15,6 +15,13 @@ const appState = {
     specialAvailable: false,
     specialCount: 0,
     losePoint: false,
+    increaseScore: false,
+    duplicateScore: false,
+    focus: false,
+    loseLifeSound: "",
+    gameOverSound: "",
+    doubleScoreSound: "",
+    increaseScoreSound: "",
     equation: {
         x: 0,
         y: 0,
@@ -125,10 +132,12 @@ var vm = new Vue({
     data: appState,
     methods: {
         loseLife: function () {
+            this.loseLifeSound.play();
             this.lifeCount -= 1;
             this.losePoint = true;
             this.closeModals();
             if (this.lifeCount == 0) {
+                this.gameOverSound.play();
                 this.gameOver = true;
                 clearInterval(this.timerInterval);
                 document.getElementById("gameOver").classList.add("md-show");
@@ -140,9 +149,13 @@ var vm = new Vue({
             }
         },
         doubleScore: function () {
+            this.doubleScoreSound.play();
+            this.duplicateScore = true;
             this.score *= 2;
         },
         correctChoice: function () {
+            this.increaseScoreSound.play();
+            this.increaseScore = true;
             this.score += 1;
         },
         wrongChoice: function () {
@@ -167,6 +180,8 @@ var vm = new Vue({
         },
         generateRandomModal: function () {
             this.losePoint = false;
+            this.duplicateScore = false;
+            this.increaseScore = false;
             var random = Math.floor(Math.random() * this.messages.length);
             this.currentMessage.correct = this.messages[random].correct;
             this.currentMessage.sender = this.messages[random].sender;
@@ -190,8 +205,10 @@ var vm = new Vue({
                 this.specialCount = 0;
             }
         },
-        generateEquation: function() {
+        generateEquation: function () {
             this.losePoint = false;
+            this.duplicateScore = false;
+            this.increaseScore = false;
             x = Math.floor(Math.random() * 10);
             y = Math.floor(Math.random() * 10);
             sum = x + y;
@@ -199,8 +216,18 @@ var vm = new Vue({
             this.equation.y = y;
             this.equation.sum = sum;
             document.getElementById("equation").value = x + " + " + y + " = ";
+            document.getElementById("solution").value = "";
+
+            // if (this.specialAvailable == true) {
+            if (this.focus) {
+                addFocus = setInterval(function () {
+                    document.getElementById("solution").focus();
+                    this.focus = false;
+                    clearInterval(addFocus);
+                }, 50);
+            }
         },
-        checkEquationSolution: function() {
+        checkEquationSolution: function () {
             if (document.getElementById("solution").value == this.equation.sum) {
                 this.doubleScore();
                 this.gainLife();
@@ -211,7 +238,7 @@ var vm = new Vue({
             this.messagesSorted += 1;
             this.specialAvailable = false;
         },
-        timer: function() {
+        timer: function () {
             console.log("timer called");
             if (this.timerValue >= this.timerMax) {
                 this.timerValue = 0;
@@ -229,6 +256,8 @@ var vm = new Vue({
         },
         addMessage: function () {
             this.losePoint = false;
+            this.duplicateScore = false;
+            this.increaseScore = false;
             if (this.messagesOnHold == 3 || (this.messagesOnHold == 2 && this.specialAvailable)) {
                 this.messagesOnHold = 0;
                 this.specialAvailable = false;
@@ -238,7 +267,7 @@ var vm = new Vue({
             }
             this.messagesOnHold += 1;
         },
-        timerStart: function() {
+        timerStart: function () {
             this.reset();
             this.generateEquation();
             this.messagesOnHold = 1;
@@ -247,11 +276,35 @@ var vm = new Vue({
         openModalInstructions: function () {
             console.log("called");
             document.getElementById("instructions").classList.add("md-show");
+        },
+        openInstructions: function () {
+            document.getElementById("instructions").classList.add("md-show");
+            this.reset();
+        },
+        generateSpecial: function () {
+            this.focus = true;
+            this.generateEquation();
         }
+    },
+    beforeMount: function () {
+        gameStart = new Audio("audio/gameStart.mp3");
+        gameStart.play();
+        this.loseLifeSound = new Audio("audio/loseLife.mp3");
+        this.gameOverSound = new Audio("audio/gameOver.mp3");
+        this.doubleScoreSound = new Audio("audio/doubleScore.mp3");
+        this.increaseScoreSound = new Audio("audio/increaseScore.mp3");
+
     },
     mounted: function () {
         this.openModalInstructions();
+        window.addEventListener('keyup', function (event) {
+            if (event.keyCode === 13 && $("#special").hasClass("md-show")) {
+                vm.checkEquationSolution();
+                $("#special").removeClass("md-show");
+            }
+        });
     }
+
 
 }).$mount('#game');
 
